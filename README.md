@@ -8,4 +8,4 @@ First, you need install [keplr wallet](https://chrome.google.com/webstore/detail
 
 Then, you can set `cw20 contract` in parameter.
 
-Example: https://giansalex.github.io/juno-cw20?contract=juno1sh36qn08g4cqg685cfzmyxqv2952q6r8chpexh
+Example: https://giansalex.github.io/juno-cw20/?contract=juno1sh36qn08g4cqg685cfzmyxqv2952q6r8chpexh
