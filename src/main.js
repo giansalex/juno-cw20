@@ -55,6 +55,7 @@ window.onload = async () => {
 };
 
 document.sendForm.onsubmit = () => {
+    document.getElementById("txt").textContent = "";
     if (!tokenInfo) {
         alert("cw20 token info not found!");
         return false;
@@ -99,6 +100,11 @@ document.sendForm.onsubmit = () => {
             } else {
                 alert("Succeed to send tx");
 
+                const txhash = result.transactionHash;
+                const txtlink = document.getElementById("txt");
+                txtlink.textContent = txhash;
+                txtlink.setAttribute("href", "https://testnet.juno.aneka.io/txs/" + txhash);
+                
                 await updateBalance(accounts[0].address, cosmJS);
             }
         } catch (error) {
