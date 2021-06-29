@@ -1,0 +1,25 @@
+{
+  "name": "juno-cw20",
+  "version": "1.0.0",
+  "description": "Juno play cw20 smartcontract",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack-dev-server",
+    "build": "webpack"
+  },
+  "keywords": [
+    "juno",
+    "cosmjs"
+  ],
+  "author": "Giancarlos Salas",
+  "license": "ISC",
+  "dependencies": {
+    "@cosmjs/cosmwasm-stargate": "^0.25.5"
+  },
+  "devDependencies": {
+    "html-webpack-plugin": "^4.3.0",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.11.0"
+  }
+}
