@@ -39,7 +39,7 @@ window.onload = async () => {
 
     document.getElementById("address").append(accounts[0].address);
     const cosmJS = await SigningCosmWasmClient.connectWithSigner(
-        "https://rpc.juno.giansalex.dev:443",
+        "https://rpc.juno.omniflix.co:443",
         offlineSigner
     );
     
@@ -83,7 +83,7 @@ document.sendForm.onsubmit = () => {
 
         // Initialize the juno roc with the offline signer that is injected by Keplr extension.
         const cosmJS = await SigningCosmWasmClient.connectWithSigner(
-            "https://rpc.juno.giansalex.dev:443",
+            "https://rpc.juno.omniflix.co:443",
             offlineSigner
         );
 
@@ -132,9 +132,9 @@ async function registerKeplr() {
                     // The name of the chain to be displayed to the user.
                     chainName: "Juno testnet",
                     // RPC endpoint of the chain.
-                    rpc: "https://rpc.juno.giansalex.dev:443",
+                    rpc: "https://rpc.juno.omniflix.co:443",
                     // REST endpoint of the chain.
-                    rest: "https://lcd.juno.giansalex.dev:443",
+                    rest: "https://api.juno.omniflix.co:443",
                     // Staking coin information
                     // (Currently, Keplr doesn't have the UI that shows multiple tokens, therefore this uses the SHELL token as the primary token althought SHELL is not a staking coin.)
                     stakeCurrency: {
