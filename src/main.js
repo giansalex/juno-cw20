@@ -102,7 +102,7 @@ document.sendForm.onsubmit = () => {
                 const txhash = result.transactionHash;
                 const txtlink = document.getElementById("txt");
                 txtlink.textContent = txhash;
-                txtlink.setAttribute("href", "https://testnet.juno.aneka.io/txs/" + txhash);
+                txtlink.setAttribute("href", "https://blueprints.juno.giansalex.dev/#/transactions/" + txhash);
                 
                 await updateBalance(accounts[0].address, cosmJS);
             }
