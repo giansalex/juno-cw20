@@ -1,7 +1,9 @@
 const { SigningCosmWasmClient } = require("@cosmjs/cosmwasm-stargate");
+const { calculateFee } = require("@cosmjs/stargate");
 
 let tokenInfo;
-let contract = "juno1sh36qn08g4cqg685cfzmyxqv2952q6r8chpexh";
+let contract = "juno1suhgf5svhu4usrurvxzlgn54ksxmn8gljarjtxqnapv8kjnp4nrsf8smqw";
+const chainId = "uni";
 
 window.onload = async () => {
     const status = await registerKeplr();
@@ -20,8 +22,6 @@ window.onload = async () => {
         alert("Error not contract");
         return;
     }
-
-    const chainId = "lucina";
 
     // You should request Keplr to enable the wallet.
     // This method will ask the user whether or not to allow access if they haven't visited this website.
@@ -74,8 +74,6 @@ document.sendForm.onsubmit = () => {
     amount = Math.floor(amount);
 
     (async () => {
-        // See above.
-        const chainId = "lucina";
         await window.keplr.enable(chainId);
         const offlineSigner = window.getOfflineSigner(chainId);
 
@@ -90,7 +88,8 @@ document.sendForm.onsubmit = () => {
         const executMsg = {transfer: {recipient: recipient, amount: amount.toString()}};
         try {
             
-            const result = await cosmJS.execute(accounts[0].address, contract, executMsg);
+            const fee = await calculateFee(400000, "0.025ucosm");
+            const result = await cosmJS.execute(accounts[0].address, contract, executMsg, fee);
 
             console.log(result);
 
@@ -128,9 +127,9 @@ async function registerKeplr() {
                 // If the same chain id is already registered, it will resolve and not require the user interactions.
                 await window.keplr.experimentalSuggestChain({
                     // Chain-id of the Cosmos SDK chain.
-                    chainId: "lucina",
+                    chainId: chainId,
                     // The name of the chain to be displayed to the user.
-                    chainName: "Juno testnet",
+                    chainName: "Juno Testnet",
                     // RPC endpoint of the chain.
                     rpc: "https://rpc.juno.giansalex.dev:443",
                     // REST endpoint of the chain.
@@ -139,9 +138,9 @@ async function registerKeplr() {
                     // (Currently, Keplr doesn't have the UI that shows multiple tokens, therefore this uses the SHELL token as the primary token althought SHELL is not a staking coin.)
                     stakeCurrency: {
                         // Coin denomination to be displayed to the user.
-                        coinDenom: "JUNO",
+                        coinDenom: "JUNOX",
                         // Actual denom (i.e. uatom, uscrt) used by the blockchain.
-                        coinMinimalDenom: "ujuno",
+                        coinMinimalDenom: "ujunox",
                         // # of decimal points to convert minimal denomination to user-facing denomination.
                         coinDecimals: 6,
                         // (Optional) Keplr can show the fiat value of the coin if a coingecko id is provided.
@@ -178,9 +177,9 @@ async function registerKeplr() {
                     // List of all coin/tokens used in this chain.
                     currencies: [{
                         // Coin denomination to be displayed to the user.
-                        coinDenom: "JUNO",
+                        coinDenom: "JUNOX",
                         // Actual denom (i.e. uatom, uscrt) used by the blockchain.
-                        coinMinimalDenom: "ujuno",
+                        coinMinimalDenom: "ujunox",
                         // # of decimal points to convert minimal denomination to user-facing denomination.
                         coinDecimals: 6,
                         // (Optional) Keplr can show the fiat value of the coin if a coingecko id is provided.
@@ -191,9 +190,9 @@ async function registerKeplr() {
                     // List of coin/tokens used as a fee token in this chain.
                     feeCurrencies: [{
                         // Coin denomination to be displayed to the user.
-                        coinDenom: "JUNO",
+                        coinDenom: "JUNOX",
                         // Actual denom (i.e. uatom, uscrt) used by the blockchain.
-                        coinMinimalDenom: "ujuno",
+                        coinMinimalDenom: "ujunox",
                         // # of decimal points to convert minimal denomination to user-facing denomination.
                         coinDecimals: 6,
                         // (Optional) Keplr can show the fiat value of the coin if a coingecko id is provided.
@@ -216,7 +215,7 @@ async function registerKeplr() {
                         average: 0.025,
                         high: 0.04
                     },
-                    features: ["stargate", 'ibc-transfer', 'cosmwasm']
+                    features: ["stargate", 'ibc-transfer', 'cosmwasm', 'no-legacy-stdTx']
                 });
 
                 return true;
