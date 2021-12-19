@@ -215,7 +215,7 @@ async function registerKeplr() {
                         average: 0.025,
                         high: 0.04
                     },
-                    features: ["stargate", 'ibc-transfer', 'cosmwasm', 'no-legacy-stdTx']
+                    features: ["stargate", 'ibc-transfer', 'cosmwasm', 'no-legacy-stdTx', 'ibc-go']
                 });
 
                 return true;
