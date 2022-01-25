@@ -3,7 +3,7 @@ const { calculateFee } = require("@cosmjs/stargate");
 
 let tokenInfo;
 let contract = "juno1suhgf5svhu4usrurvxzlgn54ksxmn8gljarjtxqnapv8kjnp4nrsf8smqw";
-const chainId = "uni";
+const chainId = "uni-1";
 
 window.onload = async () => {
     const status = await registerKeplr();
@@ -215,7 +215,7 @@ async function registerKeplr() {
                         average: 0.025,
                         high: 0.04
                     },
-                    features: ["stargate", 'ibc-transfer', 'cosmwasm', 'no-legacy-stdTx']
+                    features: ["stargate", 'ibc-transfer', 'cosmwasm', 'no-legacy-stdTx', 'ibc-go']
                 });
 
                 return true;
