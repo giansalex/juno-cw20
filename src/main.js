@@ -3,7 +3,7 @@ const { calculateFee } = require("@cosmjs/stargate");
 
 let tokenInfo;
 let contract = "juno1suhgf5svhu4usrurvxzlgn54ksxmn8gljarjtxqnapv8kjnp4nrsf8smqw";
-const chainId = "uni";
+const chainId = "uni-1";
 
 window.onload = async () => {
     const status = await registerKeplr();
