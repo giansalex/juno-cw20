@@ -2,15 +2,12 @@ const { SigningCosmWasmClient } = require("@cosmjs/cosmwasm-stargate");
 const { calculateFee } = require("@cosmjs/stargate");
 
 let tokenInfo;
-let contract = "juno1suhgf5svhu4usrurvxzlgn54ksxmn8gljarjtxqnapv8kjnp4nrsf8smqw";
+let contract = "juno1jue5rlc9dkurt3etr57duutqu7prchqrk2mes2227m52kkrual3qa9lzdd";
 const chainId = "uni-1";
+const explorer = "https://blueprints.juno.giansalex.dev";
+const rpc = "https://rpc.juno.giansalex.dev:443";
 
 window.onload = async () => {
-    const status = await registerKeplr();
-    if (!status) {
-        return;
-    }
-
     const queryString = window.location.search;
     const qparams = new URLSearchParams(queryString);
 
@@ -20,6 +17,13 @@ window.onload = async () => {
 
     if (!contract) {
         alert("Error not contract");
+        return;
+    }
+    setContractLink(contract);
+
+    // connect wallet
+    const status = await registerKeplr();
+    if (!status) {
         return;
     }
 
@@ -81,14 +85,14 @@ document.sendForm.onsubmit = () => {
 
         // Initialize the juno roc with the offline signer that is injected by Keplr extension.
         const cosmJS = await SigningCosmWasmClient.connectWithSigner(
-            "https://rpc.juno.giansalex.dev:443",
+            rpc,
             offlineSigner
         );
 
         const executMsg = {transfer: {recipient: recipient, amount: amount.toString()}};
         try {
             
-            const fee = await calculateFee(400000, "0.025ucosm");
+            const fee = await calculateFee(160000, "0.025ujunox");
             const result = await cosmJS.execute(accounts[0].address, contract, executMsg, fee);
 
             console.log(result);
@@ -102,7 +106,7 @@ document.sendForm.onsubmit = () => {
                 const txhash = result.transactionHash;
                 const txtlink = document.getElementById("txt");
                 txtlink.textContent = txhash;
-                txtlink.setAttribute("href", "https://blueprints.juno.giansalex.dev/#/transactions/" + txhash);
+                txtlink.setAttribute("href", explorer + "/#/transactions/" + txhash);
                 
                 await updateBalance(accounts[0].address, cosmJS);
             }
@@ -114,6 +118,12 @@ document.sendForm.onsubmit = () => {
 
     return false;
 };
+
+function setContractLink(contract) {
+    const contractLink = document.getElementById("contract");
+    contractLink.textContent = contract;
+    contractLink.setAttribute("href", explorer + "/#/contracts/" + contract);
+}
 
 async function registerKeplr() {
     if (!window.getOfflineSigner || !window.keplr) {

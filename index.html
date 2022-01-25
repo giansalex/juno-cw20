@@ -7,7 +7,7 @@
             JUNO CW20 Transfer
         </title>
         <meta name="description" content="Integrate Juno Chain into Keplr Wallet" >
-        <link rel="icon" href="https://gblobscdn.gitbook.com/spaces%2F-MZiFiIZH5IkEYsWMUO4%2Favatar-1619979782356.png">
+        <link rel="icon" href="https://junochain.com/favicon.ico">
         <link rel="stylesheet" href="https://bootswatch.com/5/darkly/bootstrap.min.css">
         <style>
             html { height: 100%;}
@@ -23,7 +23,7 @@
                 font-size: 1.6rem;
             }
 
-            #address, #balance {
+            #address, #balance, #ctr-container {
                 padding-bottom: 30px;
             }
         </style>
@@ -36,6 +36,10 @@
                     <div class="container-sm">
                     <b>Address:</b>
                     <div id="address"></div>
+                    <b>Contract:</b>
+                    <div id="ctr-container">
+                        <a id="contract" href="#" target="_blank"></a>
+                    </div>
                     <b>Balance:</b>
                     <div id="balance"></div>
                     <div class="row">
