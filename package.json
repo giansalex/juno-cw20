@@ -14,7 +14,7 @@
   "author": "Giancarlos Salas",
   "license": "ISC",
   "dependencies": {
-    "@cosmjs/cosmwasm-stargate": "^0.26.4"
+    "@cosmjs/cosmwasm-stargate": "^0.27.0"
   },
   "devDependencies": {
     "html-webpack-plugin": "^4.3.0",
