@@ -79,7 +79,7 @@ document.sendForm.onsubmit = () => {
 
     (async () => {
         await window.keplr.enable(chainId);
-        const offlineSigner = window.getOfflineSigner(chainId);
+        const offlineSigner = await window.getOfflineSignerAuto(chainId);
 
         const accounts = await offlineSigner.getAccounts();
 
