@@ -2,7 +2,7 @@ const { SigningCosmWasmClient } = require("@cosmjs/cosmwasm-stargate");
 const { calculateFee } = require("@cosmjs/stargate");
 
 let tokenInfo;
-let contract = "juno1jue5rlc9dkurt3etr57duutqu7prchqrk2mes2227m52kkrual3qa9lzdd";
+let contract = "juno1nc5tatafv6eyq7llkr2gv50ff9e22mnf70qgjlv737ktmt4eswrq68ev2p";
 const chainId = "uni-2";
 const explorer = "https://blueprints.juno.giansalex.dev";
 const rpc = "https://rpc.juno.giansalex.dev:443";
