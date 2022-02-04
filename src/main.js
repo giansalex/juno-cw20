@@ -3,7 +3,7 @@ const { calculateFee } = require("@cosmjs/stargate");
 
 let tokenInfo;
 let contract = "juno1jue5rlc9dkurt3etr57duutqu7prchqrk2mes2227m52kkrual3qa9lzdd";
-const chainId = "uni-1";
+const chainId = "uni-2";
 const explorer = "https://blueprints.juno.giansalex.dev";
 const rpc = "https://rpc.juno.giansalex.dev:443";
 
