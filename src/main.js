@@ -3,7 +3,7 @@ const { calculateFee } = require("@cosmjs/stargate");
 
 let tokenInfo;
 let contract = "juno1nc5tatafv6eyq7llkr2gv50ff9e22mnf70qgjlv737ktmt4eswrq68ev2p";
-const chainId = "uni-2";
+const chainId = "uni-5";
 const explorer = "https://blueprints.juno.giansalex.dev";
 const rpc = "https://rpc.juno.giansalex.dev:443";
 
@@ -221,11 +221,11 @@ async function registerKeplr() {
                     // Currently, Keplr doesn't support dynamic calculation of the gas prices based on on-chain data.
                     // Make sure that the gas prices are higher than the minimum gas prices accepted by chain validators and RPC/REST endpoint.
                     gasPriceStep: {
-                        low: 0.01,
-                        average: 0.025,
-                        high: 0.04
+                        low: 0.001,
+                        average: 0.002,
+                        high: 0.025
                     },
-                    features: ['ibc-transfer', 'cosmwasm', 'ibc-go']
+                    features: ["cosmwasm", "ibc-transfer", "ibc-go", "wasmd_0.24+"]
                 });
 
                 return true;
